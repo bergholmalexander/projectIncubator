@@ -30,3 +30,5 @@ Initial sketch of the idea
 https://drive.google.com/file/d/1LnYjWHe8gprkdCU-0yOr_ygb2bo5WyUt/view?usp=sharing  
 Documented into readable  
 https://docs.google.com/document/d/1P_nT99wANjcH2eoeLPJpTkw12CHP6IeKi7Ia9QDhEF8/edit?usp=sharing  
+Progressively built playlist on key-points per week --> Eventually stand-up?
+https://www.youtube.com/playlist?list=PLqyJ5Y41Bj5LTFblf9LiTBcQQPhOwzl5t
