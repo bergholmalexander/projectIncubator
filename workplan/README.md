@@ -32,5 +32,6 @@ Seniors/Juniors say whether they're interested in working on the project and get
 * Projects should have a timeline that is easy to advertise: Log of progress ...
 
 # Week 2 Rundown
-Ming set up the basic skeleton for the React-Redux project  
+Set up the basic skeleton for the React-Redux project  
+Set up Trello: https://trello.com/b/L6FzQTae/project-incubator
 Discussed pages: https://drive.google.com/file/d/1-sMfn7L7fDeum7qbOOaZ2dks7lBdFfhj/view?usp=sharing
