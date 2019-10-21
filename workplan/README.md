@@ -30,3 +30,7 @@ Seniors/Juniors say whether they're interested in working on the project and get
 * Should host not just projects huge projects but allow for an environment in which to have projects for climate change, beach cleaning events, charity events ... usable by schools
 * Should be linkable like github
 * Projects should have a timeline that is easy to advertise: Log of progress ...
+
+# Week 2 Rundown
+Ming set up the basic skeleton for the React-Redux project
+Discussed pages: https://drive.google.com/file/d/1-sMfn7L7fDeum7qbOOaZ2dks7lBdFfhj/view?usp=sharing
