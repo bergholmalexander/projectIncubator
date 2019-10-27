@@ -8,9 +8,14 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import theme from './theme';
+
 ReactDOM.render(
   <Provider store={createStore(rootReducer)}>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
