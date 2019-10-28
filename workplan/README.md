@@ -35,3 +35,12 @@ Seniors/Juniors say whether they're interested in working on the project and get
 Set up the basic skeleton for the React-Redux project  
 Set up Trello: https://trello.com/b/L6FzQTae/project-incubator
 Discussed pages: https://drive.google.com/file/d/1-sMfn7L7fDeum7qbOOaZ2dks7lBdFfhj/view?usp=sharing
+
+# Week 3 Rundown
+Talked about 3 specific User Stories:  
+- A high school student wants to be part of a project, but doesn't have thier own idea. Through this website they are able to find a project to be part of in their vicinity.  
+- An NGO/SME has a problem that they wish for people to bring project solution proposals for. Arts students are able to slightly tweak essays that they have written for class and try to apply them to a real life task.  
+- A school wants an application in which they can monitor, handle and log students CAS projects and create events (fundraising, cleaning beaches...).  
+The website will be more catered towards the first two.
+
+Began implementing the Landing Page, using the following mock-up as a base: https://drive.google.com/file/d/1_Bnlmf1JwfeHeFd_Y8xLMAekwNZCLx-H/view?usp=sharing  
