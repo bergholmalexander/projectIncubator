@@ -4,14 +4,14 @@ import { createBrowserHistory } from 'history';
 
 // import PrivateRoute from './components/PrivateRoute';
 
-import Home from './pages/Home';
+import Landing from './pages/Landing';
 
 const browserHistory = createBrowserHistory();
 
 const App = () => (
   <Router history={browserHistory}>
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Landing} />
     </Switch>
   </Router>
 );
