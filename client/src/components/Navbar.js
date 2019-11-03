@@ -65,12 +65,13 @@ const Navbar = ({
         </Button>
         <Link
           className={classes.link}
-          to="/signin">
+          to="/signin"
+        >
           <Button
             color="primary"
             variant="outlined"
           >
-          Sign in
+            Sign in
           </Button>
         </Link>
       </div>
