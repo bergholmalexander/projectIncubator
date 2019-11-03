@@ -44,3 +44,16 @@ Talked about 3 specific User Stories:
 The website will be more catered towards the first two.
 
 Began implementing the Landing Page, using the following mock-up as a base: https://drive.google.com/file/d/1_Bnlmf1JwfeHeFd_Y8xLMAekwNZCLx-H/view?usp=sharing  
+
+# Week 4 Rundown  
+- Created SignIn Page  
+- Created SignUp Page  
+- Looked into JWT authentication (and Auth0)  
+
+Todo's for the above:  
+- Add Facebook / Google Authentication  
+- Link to backend  
+
+TODO's:
+Looking into GoLang, looking into JWT Authentication for GoLang (resources etc.)  
+https://jwt.io/#libraries look into the libraries for Go provided here.
