@@ -64,14 +64,14 @@ const Navbar = ({
           Join now
         </Button>
         <Link
-        className={classes.link}
-        to="/signin">
-        <Button
-          color="primary"
-          variant="outlined"
-        >
+          className={classes.link}
+          to="/signin">
+          <Button
+            color="primary"
+            variant="outlined"
+          >
           Sign in
-        </Button>
+          </Button>
         </Link>
       </div>
     </div>
