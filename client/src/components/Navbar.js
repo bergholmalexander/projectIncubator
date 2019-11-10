@@ -58,11 +58,17 @@ const Navbar = ({
         <h1>projectIncubator</h1>
       </Link>
       <div>
-        <Button
-          variant="text"
+        <Link 
+          className={classes.link}
+          to="/SignUp"
         >
-          Join now
-        </Button>
+
+          <Button
+            variant="text"
+          >
+            Join now
+          </Button>
+        </Link>
         <Link
           className={classes.link}
           to="/signin"

@@ -5,6 +5,8 @@ import { createBrowserHistory } from 'history';
 // import PrivateRoute from './components/PrivateRoute';
 
 import Landing from './pages/Landing';
+
+import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 
 const browserHistory = createBrowserHistory();
@@ -13,6 +15,7 @@ const App = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route exact path="/" component={Landing} />
+      <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
     </Switch>
   </Router>
