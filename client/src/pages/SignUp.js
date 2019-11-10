@@ -30,9 +30,6 @@ const styles = theme => ({
       flexDirection: 'column'
     }
   },
-  searchIcon: {
-    color: theme.palette.darkgrey
-  }
 });
 
 const SignUp = ({
@@ -48,7 +45,7 @@ const SignUp = ({
       <section>
         <Container maxWidth="md">
           <ValidatorForm
-            //onSubmit={this.handleSubmit}
+            //TODO: onSubmit={this.handleSubmit}
           >
             <TextValidator
               label="Email"
@@ -80,13 +77,18 @@ const SignUp = ({
   </React.Fragment>
 );
 
-let mapStateToProps = state => {
-  return { email: state.signUpReducer.email, password: state.signUpReducer.password };
+const mapStateToProps = state => {
+  return { 
+    email: state.signUpReducer.email, 
+    password: state.signUpReducer.password 
+  };
 };
 
-let mapDispatchToProps = dispatch => {
-  return { handleChangeEmail: e => dispatch(signUpOnChangeEmail(e)),
-    handleChangePassword: p => dispatch(signUpOnChangePassword(p)) };
+const mapDispatchToProps = dispatch => {
+  return { 
+    handleChangeEmail: e => dispatch(signUpOnChangeEmail(e)),
+    handleChangePassword: p => dispatch(signUpOnChangePassword(p)) 
+  };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(SignUp));

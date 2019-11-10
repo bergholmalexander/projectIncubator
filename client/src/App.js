@@ -15,7 +15,7 @@ const App = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route exact path="/" component={Landing} />
-      <Route path="/signup" component={SignUp}/>
+      <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
     </Switch>
   </Router>

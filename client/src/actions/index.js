@@ -1,4 +1,4 @@
-export const signUpOnChangeEmail = email=> {
+export const signUpOnChangeEmail = email => {
   return {
     type: 'SIGNUP_ONCHANGE_EMAIL',
     payload: email
