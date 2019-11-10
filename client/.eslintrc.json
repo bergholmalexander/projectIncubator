@@ -25,7 +25,8 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            { "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",
@@ -38,6 +39,22 @@
         "semi": [
             "error",
             "always"
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always",
+          {
+            "arraysInObjects": false,
+            "objectsInObjects": false
+          }
+        ],
+        "array-bracket-spacing": [
+          "error",
+          "never"
         ]
     },
     "settings": {
