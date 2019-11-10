@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
-const signUpReducer = (state = {email:'',password:''}, action) => {
+const signUpReducer = (state = { email:'',password:'' }, action) => {
   switch(action.type) {
-  case 'SIGNUP_ONCHANGE_EMAIL':
-    return {...state, email: action.payload};
-  case 'SIGNUP_ONCHANGE_PASSWORD':
-    return {...state, password: action.payload};
-  default:
-    return {...state};
+    case 'SIGNUP_ONCHANGE_EMAIL':
+      return { ...state, email: action.payload };
+    case 'SIGNUP_ONCHANGE_PASSWORD':
+      return { ...state, password: action.payload };
+    default:
+      return { ...state };
   }
 };
 
@@ -36,5 +36,4 @@ const signInReducer = (
   }
 };
 
-export default combineReducers({ signUpReducer });
-export default combineReducers({ signInReducer });
+export default combineReducers({ signUpReducer, signInReducer });

@@ -52,7 +52,7 @@ const SignUp = ({
           >
             <TextValidator
               label="Email"
-              onChange={(e) => handleChangeEmail(e.target.value)}
+              onChange={e => handleChangeEmail(e.target.value)}
               name="email"
               value={email}
               validators={['required', 'isEmail']}
@@ -62,14 +62,14 @@ const SignUp = ({
             <br/>
             <TextValidator
               label="Password"
-              onChange={(p) => handleChangePassword(p.target.value)}
+              onChange={p => handleChangePassword(p.target.value)}
               name="password"
               type="password"
               validators={['required']}
               errorMessages={['this field is required']}
               value={password}
               variant= 'outlined'
-              style = {{color: 'white'}}
+              style = {{ color: 'white' }}
             />
             <br/>
             <Button type="Sign up">Submit</Button>
@@ -80,13 +80,13 @@ const SignUp = ({
   </React.Fragment>
 );
 
-let mapStateToProps = (state) => {
-  return {email: state.signUpReducer.email, password: state.signUpReducer.password};
+let mapStateToProps = state => {
+  return { email: state.signUpReducer.email, password: state.signUpReducer.password };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {handleChangeEmail: (e) => dispatch(signUpOnChangeEmail(e)),
-    handleChangePassword: (p) => dispatch(signUpOnChangePassword(p))};
+let mapDispatchToProps = dispatch => {
+  return { handleChangeEmail: e => dispatch(signUpOnChangeEmail(e)),
+    handleChangePassword: p => dispatch(signUpOnChangePassword(p)) };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(SignUp));
