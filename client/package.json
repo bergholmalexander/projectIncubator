@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-material-ui-form-validator": "^2.0.9",
@@ -18,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint": "./node_modules/.bin/eslint src/**/*.js"
+    "eslint": "./node_modules/.bin/eslint src/**/*.js",
+    "eslint --fix": "./node_modules/.bin/eslint --fix src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"

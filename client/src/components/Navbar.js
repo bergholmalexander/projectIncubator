@@ -62,18 +62,23 @@ const Navbar = ({
           className={classes.link}
           to="/SignUp"
         >
+
           <Button
             variant="text"
           >
             Join now
           </Button>
         </Link>
-        <Button
-          color="primary"
-          variant="outlined"
-        >
+        <Link
+          className={classes.link}
+          to="/signin">
+          <Button
+            color="primary"
+            variant="outlined"
+          >
           Sign in
-        </Button>
+          </Button>
+        </Link>
       </div>
     </div>
   );
