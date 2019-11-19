@@ -3,8 +3,8 @@
 ### Golang  
 Download golang from here https://golang.org/ execute as needed.  
 Add the following two lines to your `.bash_profile` file or to your pathing in Windows (not sure how to do that, sorry Kenrick)  
-```export GOROOT=/usr/local/go  
-export GOPATH=/path_to_git_repo/projectIncubator/go```
+`export GOROOT=/usr/local/go`  
+`export GOPATH=/path_to_git_repo/projectIncubator/go`
 I believe the first line is not too important as long as you choose a desired location. GOPATH *must* be where the go folder in the repo is.
 In `/path_to_git_repo/projectIncubator/go`, type the following commands
 `go get github.com/gorilla/mux`
