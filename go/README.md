@@ -25,6 +25,11 @@ From within `/Users/bergholm/projects/projectIncubator/go` run `go run main.go` 
 
 ### Server Endpoints
 The localhost currently hosts the server on port 12345. We can later choose this to be something else.  
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 Description | REST Type | Endpoint | Input  
 ------------ | ------------ | ------------- | -------------  
 SignIn - Used to get the JWT Token | POST | `localhost:12345/signin` | `{"username":"user1","password":"password1"}`  
