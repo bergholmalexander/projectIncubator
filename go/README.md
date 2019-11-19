@@ -25,19 +25,15 @@ From within `/Users/bergholm/projects/projectIncubator/go` run `go run main.go` 
 
 ### Server Endpoints
 The localhost currently hosts the server on port 12345. We can later choose this to be something else.  
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+
 Description | REST Type | Endpoint | Input  
 ------------ | ------------ | ------------- | -------------  
-SignIn - Used to get the JWT Token | POST | `localhost:12345/signin` | `{"username":"user1","password":"password1"}`  
-Welcome - | GET | `localhost:12345/welcome` | None - Uses the cookie formed from SignIn  
-Refresh - Used by client to get new JWT when near expiry | GET | `localhost:12345/welcome` | None - Uses the JWT from SignIn  
-Person - Creates a Person in the MongoDB collection | POST | `localhost:12345/person` | {"firstname": "Kenrick", "lastname": "Yap"} - Creates objectID  
-People - Gets all people in MDB collection | GET | `localhost:12345/people` | None  
-Person/{id} - Gets a person using an MongoDB ObjectID | GET | `localhost:12345/people/{id}` | None  
+Used to get the JWT Token | POST | `localhost:12345/signin` | `{"username":"user1","password":"password1"}`  
+Welcome page? | GET | `localhost:12345/welcome` | None - Uses the cookie formed from SignIn  
+Used by client to get new JWT when near expiry | GET | `localhost:12345/welcome` | None - Uses the JWT from SignIn  
+Creates a Person in the MongoDB collection | POST | `localhost:12345/person` | {"firstname": "Kenrick", "lastname": "Yap" (Creates objectID)
+Gets all people in MDB collection | GET | `localhost:12345/people` | None  
+Gets a person using an MongoDB ObjectID | GET | `localhost:12345/people/{id}` | None  
 
 # Resources followed
 
