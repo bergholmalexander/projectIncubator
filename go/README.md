@@ -24,7 +24,7 @@ From within `/Users/bergholm/projects/projectIncubator/go` run `go run main.go` 
 `Starting the application...` to show that the server is now listening and waiting for requests.
 
 ### Server Endpoints
-The localhost currently hosts the server on port 12345. We can later choose this to be something else.
+The localhost currently hosts the server on port 12345. We can later choose this to be something else.  
 Description | REST Type | Endpoint | Input  
 ------------ | ------------ | ------------- | -------------  
 SignIn - Used to get the JWT Token | POST | `localhost:12345/signin` | `{"username":"user1","password":"password1"}`  
