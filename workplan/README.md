@@ -57,3 +57,60 @@ Todo's for the above:
 TODO's:
 Looking into GoLang, looking into JWT Authentication for GoLang (resources etc.)  
 https://jwt.io/#libraries look into the libraries for Go provided here.
+
+# Week 5 Rundown
+Ming created a Mock backend with Meteor for when it might be needed in the future. Also updated signin/login colouring.
+Alex made a very simple Server using Go with REST endpoint handling and JWT authentication. Also implements MongoDB.
+
+Rough draft of collections and data  
+
+Collections  
+- Users  
+- Profiles  
+- Projects  
+
+### Users
+```
+{ “_id”: mongoID,
+  “email”: string,
+  “password”: string,
+  profile: {
+  “avatar”: Cloudinary?
+  “firstname”: Object { value: string },
+  “lastname”: Object { value: string },
+  “links”: Array of objects,
+  “tags”: Array of Objects that are strings,
+  “projects”: Array of MongoID’s that refer to projects,
+  “location”: Array of at least one location objects,
+  “followedProjects”: Array of Objects (projectIds)
+  }
+}
+```
+// phone later
+// “DisplayedProjects”: Array of indexes? later
+// 
+
+### Projects
+```
+{ “_id”: mongoID,
+  “media”: Array of Objects, <- to be figured out!
+  “title”: Object string,
+  “peopleInvolved”:  Array of Objects (ids),
+  “tags”: Array of Objects (strings),
+  “ExpectedCompletionTime”: Object DayTime,
+  “Widgets”:
+  “Group”: (Reference other projects / articles / groups?)
+}
+```
+### Types of Widgets
+- Timeline / Linear Goals that you will achieve sequentially (TODO list)
+- Event/Announcement/Notifier (for everyone)
+- Blogs <- Graph tools, convenient, media, can reference others here..
+- Report / (Essay/PDF) / Presentation embeddable
+- Calendar/Scheduler
+- Countdown
+
+TODO's:
+- Ming looks into avatar storing locations
+- Kenrick <- format, make it more interesting
+- Refactor Go code that was made, try implementing the datatypes mentioned
