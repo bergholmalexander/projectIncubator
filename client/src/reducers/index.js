@@ -1,37 +1,14 @@
 import { combineReducers } from 'redux';
 
-const signUpReducer = (
-  state = { 
-    email:'',
-    password:'' 
-  }, 
-  action
-) => {
-  switch(action.type) {
-    case 'SIGNUP_ONCHANGE_EMAIL':
-      return { 
-        ...state, 
-        email: action.payload 
-      };
-    case 'SIGNUP_ONCHANGE_PASSWORD':
-      return { 
-        ...state, 
-        password: action.payload 
-      };
-    default:
-      return { ...state };
-  }
-};
-
 const signInReducer = (
   state = {
     email: '',
-    password:''
+    password: ''
   },
   action
 ) => {
   switch (action.type) {
-    case 'SIGNIN_ONCHANGE_EMAILPHONE':
+    case 'SIGNIN_ONCHANGE_EMAIL':
       return {
         ...state,
         email: action.payload
@@ -42,10 +19,43 @@ const signInReducer = (
         password: action.payload
       };
     default:
-      return {
-        ...state
-      };
+      return { ...state };
   }
 };
 
-export default combineReducers({ signUpReducer, signInReducer });
+const signUpReducer = (
+  state = {
+    email: '',
+    password: ''
+  },
+  action
+) => {
+  switch(action.type) {
+    case 'SIGNUP_ONCHANGE_EMAIL':
+      return {
+        ...state,
+        email: action.payload
+      };
+    case 'SIGNUP_ONCHANGE_PASSWORD':
+      return {
+        ...state,
+        password: action.payload
+      };
+    default:
+      return { ...state };
+  }
+};
+
+const appReducer = combineReducers({
+  signInReducer,
+  signUpReducer
+});
+
+const rootReducer = (state, action) => {
+  if (action.type === 'SIGN_OUT') {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
+
+export default rootReducer;

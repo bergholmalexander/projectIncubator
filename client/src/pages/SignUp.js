@@ -1,102 +1,186 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { connect } from 'react-redux';
-import { signUpOnChangeEmail, signUpOnChangePassword } from '../actions';
+import { withStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
+import { Button, Divider, Typography } from '@material-ui/core';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import Logo from '../components/Logo';
 import {
-  Container,
-  Button
-} from '@material-ui/core';
+  signUpOnChangeEmail,
+  signUpOnChangePassword
+} from '../actions';
 
 const styles = theme => ({
   root: {
-    'background-color': theme.palette.primary.main,
-    color: theme.palette.white,
-    height: '100vh',
+    height: '100%',
     boxSizing: 'border-box',
-    paddingTop: '50px',
+    '& button': {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '4em 0',
+      backgroundColor: theme.palette.primary.main
+    }
+  },
+  card: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    '& > section:nth-of-type(1)': {
-      'text-align': 'center',
-      'font-weight': 'bold',
-      fontSize: '1.8em',
-      padding: '1em',
+    margin: 'auto',
+    boxSizing: 'border-box',
+    backgroundColor: theme.palette.white,
+    '& > p': {
+      margin: '0.5em 0 1em'
     },
-    '& form': {
-      display: 'flex',
-      flexDirection: 'column'
+    [theme.breakpoints.down('sm')]: {
+      padding: '2em 1.5em 10em'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '36em',
+      padding: '5em 7em 10em',
+      border: `1px solid ${theme.palette.grey.light}`,
+      borderRadius: '5px'
     }
   },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    '& button': {
+      height: '3em',
+      marginTop: '1em'
+    }
+  },
+  formInput: {
+    marginBottom: '0.6em'
+  },
+  linkContainer: {
+    display: 'flex',
+    marginTop: '2em',
+    '& > a': {
+      color: theme.palette.blue.light,
+      lineHeight: '24px',
+      textDecoration: 'none',
+      transition: 'all 150ms linear 0s',
+      '&:hover': {
+        color: theme.palette.blue.dark
+      }
+    }
+  },
+  divider: {
+    margin: '1em 0 2em',
+    width: '100%'
+  },
+  loginServiceContainer: {
+    width: '100%',
+    '& > button': {
+      width: '100%',
+      backgroundColor: theme.palette.facebook.main,
+      color: theme.palette.white,
+      '&:hover': {
+        backgroundColor: theme.palette.facebook.light
+      }
+    }
+  }
 });
 
-const SignUp = ({
-  classes, email, password, handleChangeEmail, handleChangePassword
-}) => (
-  <React.Fragment>
+function SignUp({
+  classes,
+  email,
+  password,
+  handleChangeEmail,
+  handleChangePassword,
+  handleSubmit
+}) {
+  return (
     <div className={classes.root}>
-      <section>
-            projectIncubator
-        <br />
-            incubate your projects now!
-      </section>
-      <section>
-        <Container maxWidth="md">
-          <ValidatorForm
-            //TODO: onSubmit={this.handleSubmit}
+      <div className={classes.card}>
+        <Logo />
+        <Typography>Incubate your projects now!</Typography>
+        <ValidatorForm
+          className={classes.form}
+          onSubmit={() => handleSubmit(email, password)}
+        >
+          <TextValidator
+            className={classes.formInput}
+            label="Email"
+            variant="outlined"
+            value={email}
+            validators={['required', 'isEmail']}
+            errorMessages={[
+              'Please enter an email address.',
+              'Please enter a valid email address.'
+            ]}
+            onChange={e => handleChangeEmail(e.target.value)}
+          />
+          <TextValidator
+            className={classes.formInput}
+            label="Password"
+            variant="outlined"
+            type="password"
+            validators={['required']}
+            errorMessages={['Please enter a password.']}
+            value={password}
+            onChange={e => handleChangePassword(e.target.value)}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
           >
-            <TextValidator
-              label="Email"
-              onChange={e => handleChangeEmail(e.target.value)}
-              name="email"
-              value={email}
-              validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'email is not valid']}
-              variant="outlined"
-            />
-            <br/>
-            <TextValidator
-              label="Password"
-              onChange={p => handleChangePassword(p.target.value)}
-              name="password"
-              type="password"
-              validators={['required']}
-              errorMessages={['this field is required']}
-              value={password}
-              variant= 'outlined'
-              style = {{ color: 'white' }}
-            />
-            <br/>
-            <Button type="Sign up">Submit</Button>
-          </ValidatorForm>
-        </Container>
-      </section>
+            Sign up
+          </Button>
+        </ValidatorForm>
+        <div className={classes.linkContainer}>
+          <Typography>
+            Already on ProjectIncubator?&nbsp;
+          </Typography>
+          <Link to="/signin">
+            Log in
+          </Link>
+        </div>
+        <Divider className={classes.divider} />
+        <div className={classes.loginServiceContainer}>
+          <Button variant="contained">
+            <FacebookIcon />&nbsp;Log in with Facebook
+          </Button>
+        </div>
+      </div>
     </div>
-  </React.Fragment>
-);
+  );
+}
 
 const mapStateToProps = state => {
-  return { 
-    email: state.signUpReducer.email, 
-    password: state.signUpReducer.password 
+  return {
+    email: state.signUpReducer.email,
+    password: state.signUpReducer.password
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return { 
-    handleChangeEmail: e => dispatch(signUpOnChangeEmail(e)),
-    handleChangePassword: p => dispatch(signUpOnChangePassword(p)) 
+  return {
+    handleChangeEmail: email => {
+      dispatch(signUpOnChangeEmail(email));
+    },
+    handleChangePassword: password => {
+      dispatch(signUpOnChangePassword(password));
+    },
+    handleSubmit: () => {}
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(SignUp));
-
 SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
-  email: PropTypes.object.isRequired,
-  password: PropTypes.object.isRequired,
-  handleChangeEmail: PropTypes.object.isRequired,
-  handleChangePassword: PropTypes.object.isRequired
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  handleChangeEmail: PropTypes.func.isRequired,
+  handleChangePassword: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(SignUp));

@@ -1,76 +1,154 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
+import { Button, Divider, Typography } from '@material-ui/core';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { signInOnChangeEmailPhone, signInOnChangePassword } from '../actions';
+import Logo from '../components/Logo';
+import {
+  signInOnChangeEmail,
+  signInOnChangePassword
+} from '../actions';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
+    height: '100%',
+    boxSizing: 'border-box',
+    '& button': {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '4em 0'
+    }
+  },
+  card: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '11rem'
+    margin: 'auto',
+    boxSizing: 'border-box',
+    '& > p': {
+      margin: '0.5em 0 1em'
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '2em 1.5em 10em'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '36em',
+      padding: '5em 7em 10em',
+      border: `1px solid ${theme.palette.grey.light}`,
+      borderRadius: '5px'
+    }
   },
   form: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '100%',
+    '& button': {
+      height: '3em',
+      marginTop: '1em'
+    }
   },
-  formComponent: {
-    marginBottom: '0.6em',
+  formInput: {
+    marginBottom: '0.6em'
+  },
+  linkContainer: {
+    display: 'flex',
+    marginTop: '2em',
+    '& > a': {
+      color: theme.palette.blue.light,
+      lineHeight: '24px',
+      textDecoration: 'none',
+      transition: 'all 150ms linear 0s',
+      '&:hover': {
+        color: theme.palette.blue.dark
+      }
+    }
+  },
+  divider: {
+    margin: '1em 0 2em',
+    width: '100%'
+  },
+  loginServiceContainer: {
+    width: '100%',
+    '& > button': {
+      width: '100%',
+      backgroundColor: theme.palette.facebook.main,
+      color: theme.palette.white,
+      '&:hover': {
+        backgroundColor: theme.palette.facebook.light
+      }
+    }
   }
 });
 
-const SignIn = ({
+function SignIn({
   classes,
   email,
   password,
   handleChangeEmail,
   handleChangePassword,
   handleSubmit
-}) => (
-  <React.Fragment>
+}) {
+  return (
     <div className={classes.root}>
-      <h1>SignIn</h1>
-      <ValidatorForm
-        onSubmit={() => handleSubmit(email, password)}
-        className={classes.form}
-      >
-        <div className={classes.formComponent}>
+      <div className={classes.card}>
+        <Logo />
+        <Typography>Welcome Back</Typography>
+        <ValidatorForm
+          className={classes.form}
+          onSubmit={() => handleSubmit(email, password)}
+        >
           <TextValidator
+            className={classes.formInput}
             label="Email"
-            onChange={e => handleChangeEmail(e.target.value)}
-            name="email"
+            variant="outlined"
             value={email}
             validators={['required', 'isEmail']}
-            errorMessages={['this field is required', 'email is not valid']}
-            variant="outlined"
+            errorMessages={[
+              'Please enter an email address.',
+              'Please enter a valid email address.'
+            ]}
+            onChange={e => handleChangeEmail(e.target.value)}
           />
-        </div>
-        <div className={classes.formComponent}>
           <TextValidator
+            className={classes.formInput}
             label="Password"
-            onChange={e => handleChangePassword(e.target.value)}
-            name="password"
+            variant="outlined"
             type="password"
             validators={['required']}
-            errorMessages={['this field is required']}
+            errorMessages={['Please enter a password.']}
             value={password}
-            variant="outlined"
+            onChange={e => handleChangePassword(e.target.value)}
           />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Log in
+          </Button>
+        </ValidatorForm>
+        <div className={classes.linkContainer}>
+          <Typography>
+            New to ProjectIncubator?&nbsp;
+          </Typography>
+          <Link to="/signup">
+            Join now
+          </Link>
         </div>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Submit
-        </Button>
-      </ValidatorForm>
+        <Divider className={classes.divider} />
+        <div className={classes.loginServiceContainer}>
+          <Button variant="contained">
+            <FacebookIcon />&nbsp;Log in with Facebook
+          </Button>
+        </div>
+      </div>
     </div>
-  </React.Fragment>
-);
+  );
+}
 
 const mapStateToProps = state => {
   return {
@@ -81,11 +159,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleChangeEmail: newEmailPhone => {
-      dispatch(signInOnChangeEmailPhone(newEmailPhone));
+    handleChangeEmail: email => {
+      dispatch(signInOnChangeEmail(email));
     },
-    handleChangePassword: newPassword => {
-      dispatch(signInOnChangePassword(newPassword));
+    handleChangePassword: password => {
+      dispatch(signInOnChangePassword(password));
     },
     handleSubmit: () => {}
   };

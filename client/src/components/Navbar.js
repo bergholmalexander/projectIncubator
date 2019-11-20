@@ -1,89 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
+import Logo from '../components/Logo';
 
 const styles = theme => ({
   root: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '50px',
-    backgroundColor: theme.palette.white,
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    height: '50px',
+    backgroundColor: theme.palette.white,
+    borderBottom: `1px solid ${theme.palette.grey.light}`,
     boxSizing: 'border-box',
-    borderBottom: `1px solid ${theme.palette.lightgrey}`,
-    zIndex: '1',
+    zIndex: '9',
     [theme.breakpoints.down('sm')]: {
-      padding: '0 1em'
+      padding: '0 1rem'
     },
     [theme.breakpoints.up('md')]: {
-      padding: '0 3em'
-    },
-    '& > div:last-of-type': {
-      '& > button:not(:last-of-type)': {
-        marginRight: '0.5em'
-      }
+      padding: '0 3rem'
     }
   },
-  link: {
-    color: theme.palette.primary.main,
-    textDecoration: 'none',
-    transition: 'all 150ms linear 0s',
-    '&:hover': {
-      color: theme.palette.primary.light
+  buttonsContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    '& button': {
+      marginLeft: '0.5em'
     },
-    '& > h1': {
-      margin: '0 0 3px',
-      [theme.breakpoints.down('sm')]: {
-        fontSize: '1.2em'
-      }
+    '& > a': {
+      textDecoration: 'none'
     }
   }
 });
 
-const Navbar = ({
+function Navbar({
   classes
-}) => {
+}) {
   return (
     <div className={classes.root}>
-      <Link
-        className={classes.link}
-        to="/"
-      >
-        <h1>projectIncubator</h1>
-      </Link>
-      <div>
-        <Link 
-          className={classes.link}
-          to="/SignUp"
-        >
-
-          <Button
-            variant="text"
-          >
-            Join now
+      <Logo />
+      <div className={classes.buttonsContainer}>
+        <Link to="/signup">
+          <Button variant="text">
+            Sign up
           </Button>
         </Link>
-        <Link
-          className={classes.link}
-          to="/signin"
-        >
-          <Button
-            color="primary"
-            variant="outlined"
-          >
-            Sign in
+        <Link to="/signin">
+          <Button variant="outlined" color="primary">
+            Log in
           </Button>
         </Link>
       </div>
     </div>
   );
-};
+}
 
 Navbar.propTypes = {
   classes: PropTypes.object.isRequired

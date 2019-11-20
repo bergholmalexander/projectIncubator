@@ -1,20 +1,29 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const theme = createMuiTheme({
+const theme = {
   palette: {
     primary: {
       main: '#237804',
-      light: '#389e0d'
+      light: '#389e0d',
     },
+    black: '#000000',
     white: '#ffffff',
-    lightgrey: '#d9d9d9',
-    darkgrey: '#8c8c8c'
+    grey: {
+      light: '#d9d9d9',
+      dark: '#8c8c8c',
+    },
+    blue: {
+      light: '#1890ff',
+      dark: '#096dd9'
+    },
+    facebook: {
+      main: '#3b5998',
+      light: '#4e71ba'
+    }
   },
   typography: {
     button: {
       textTransform: 'none'
     }
   }
-});
+};
 
 export default theme;

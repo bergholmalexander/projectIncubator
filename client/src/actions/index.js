@@ -1,3 +1,9 @@
+export const signOut = () => {
+  return {
+    type: 'SIGN_OUT'
+  };
+};
+
 export const signUpOnChangeEmail = email => {
   return {
     type: 'SIGNUP_ONCHANGE_EMAIL',
@@ -12,10 +18,10 @@ export const signUpOnChangePassword = password => {
   };
 };
 
-export const signInOnChangeEmailPhone = emailphone => {
+export const signInOnChangeEmail = email => {
   return {
-    type: 'SIGNIN_ONCHANGE_EMAILPHONE',
-    payload: emailphone
+    type: 'SIGNIN_ONCHANGE_EMAIL',
+    payload: email
   };
 };
 
