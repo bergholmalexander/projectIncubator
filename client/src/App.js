@@ -5,9 +5,9 @@ import { createBrowserHistory } from 'history';
 // import PrivateRoute from './components/PrivateRoute';
 
 import Landing from './pages/Landing';
-
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
 
 const browserHistory = createBrowserHistory();
 
@@ -17,6 +17,7 @@ const App = () => (
       <Route exact path="/" component={Landing} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
+      <Route path="/profile" component={Profile} />
     </Switch>
   </Router>
 );
