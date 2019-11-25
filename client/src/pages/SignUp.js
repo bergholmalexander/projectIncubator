@@ -97,7 +97,7 @@ function SignUp({
   return (
     <div className={classes.root}>
       <div className={classes.card}>
-        <Logo />
+        <Logo color="primary" />
         <Typography>Incubate your projects now!</Typography>
         <ValidatorForm
           className={classes.form}

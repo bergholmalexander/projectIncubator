@@ -10,9 +10,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     height: '50px',
-    backgroundColor: theme.palette.white,
-    borderBottom: `1px solid ${theme.palette.grey.light}`,
-    boxSizing: 'border-box',
+    backgroundColor: theme.palette.primary.main,
     zIndex: '9',
     [theme.breakpoints.down('sm')]: {
       padding: '0 1rem'
@@ -25,7 +23,12 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     '& button': {
-      marginLeft: '0.5em'
+      marginLeft: '0.5em',
+      color: theme.palette.white,
+      borderColor: theme.palette.white,
+      '&:hover': {
+        backgroundColor: theme.palette.primary.light
+      }
     },
     '& > a': {
       textDecoration: 'none'
@@ -46,7 +49,7 @@ function Navbar({
           </Button>
         </Link>
         <Link to="/signin">
-          <Button variant="outlined" color="primary">
+          <Button variant="outlined">
             Log in
           </Button>
         </Link>

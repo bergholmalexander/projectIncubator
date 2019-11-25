@@ -7,6 +7,7 @@ const theme = {
     black: '#000000',
     white: '#ffffff',
     grey: {
+      xlight: '#f5f5f5',
       light: '#d9d9d9',
       dark: '#8c8c8c',
     },
