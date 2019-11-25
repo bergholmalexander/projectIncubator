@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
-import { Divider, Typography } from '@material-ui/core';
+import { Container, Divider, Grid, Typography } from '@material-ui/core';
 import Navbar from '../components/Navbar';
 
 // mocks
@@ -58,24 +58,37 @@ const projects = [
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    padding: '2em 10%'
+    padding: '2em 10%',
+    backgroundColor: theme.palette.grey.xlight,
   },
-  userInfo: {
-    flexGrow: '1',
-    height: 'fit-content',
-    margin: '0 2em 0 0',
+  userContainer: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  info: {
+    margin: '0 0 1em',
     padding: '1em',
+    backgroundColor: theme.palette.white,
     border: `1px solid ${theme.palette.grey.light}`,
+    borderRadius: '5px',
     '& > img': {
-      width: '100%',
+      width: '100%'
+    },
+    '& > p:nth-of-type(1)': {
+      margin: '0.5rem 0 0.5rem'
     },
     '& > p:nth-of-type(2)': {
       color: theme.palette.grey.dark
     }
   },
-  projects: {
-    flexGrow: '3'
+  about: {
+    padding: '1em',
+    backgroundColor: theme.palette.white,
+    border: `1px solid ${theme.palette.grey.light}`,
+    borderRadius: '5px',
+    '& > p:nth-of-type(1)': {
+      margin: '0.5rem 0 0.5rem'
+    }
   },
   projectContainer: {
     margin: '1em 0 0'
@@ -87,7 +100,8 @@ const styles = theme => ({
     border: '1px solid transparent',
     transition: 'all 150ms linear 0s',
     '&:hover': {
-      border: `1px solid ${theme.palette.primary.light}`,
+      backgroundColor: theme.palette.white,
+      border: `1px solid ${theme.palette.grey.light}`,
       borderRadius: '5px',
       cursor: 'pointer'
     },
@@ -99,6 +113,13 @@ const styles = theme => ({
       borderRadius: '50%'
     },
     '& > div': {
+      '& > p:nth-of-type(1)': {
+        width: 'fit-content',
+        '&:hover': {
+          color: theme.palette.primary.main,
+          textDecoration: 'underline'
+        }
+      },
       '& > p:nth-of-type(2)': {
         color: theme.palette.grey.dark
       },
@@ -112,40 +133,68 @@ const styles = theme => ({
 function Profile({
   classes
 }) {
+  const userComponent = (
+    <div className={classes.userContainer}>
+      <div className={classes.info}>
+        <img src={user.avatar} alt="profile picture" />
+        <Typography variant="h4" component="p">
+          {user.firstName} {user.lastName}
+        </Typography>
+        <Typography>{user.location}</Typography>
+        <Typography>{user.email}</Typography>
+      </div>
+      <div className={classes.about}>
+        <Typography variant="h5" component="p">
+          About
+        </Typography>
+        <Typography>
+          Public speaker, author, aristotelian virtue
+          ethicist, and one of Canada's 30 under 30
+          developer award winners (2021).
+        </Typography>
+      </div>
+    </div>
+  );
+
+  const projectsComponent = (
+    <>
+      <Typography variant="h5" component="p">Projects</Typography>
+      <Divider />
+      <div className={classes.projectContainer}>
+        {projects.map((project, index) => (
+          <div key={index} className={classes.project}>
+            <img src={project.media[0]} alt="" />
+            <div>
+              <Typography variant="h5" component="p">
+                {project.title}
+              </Typography>
+              <Typography>{project.location}</Typography>
+              <ul>
+                {project.details.map((detail, index) => (
+                  <li key={index}>{detail}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
   return (
     <>
       <Navbar />
       <div className={classes.root}>
-        <div className={classes.userInfo}>
-          <img src={user.avatar} alt="profile picture" />
-          <Typography variant="h4" component="p">
-            {user.firstName} {user.lastName}
-          </Typography>
-          <Typography>{user.location}</Typography>
-          <Typography>{user.email}</Typography>
-        </div>
-        <div className={classes.projects}>
-          <Typography variant="h5" component="p">Projects</Typography>
-          <Divider />
-          <div className={classes.projectContainer}>
-            {projects.map((project, index) => (
-              <div key={index} className={classes.project}>
-                <img src={project.media[0]} alt="" />
-                <div>
-                  <Typography variant="h5" component="p">
-                    {project.title}
-                  </Typography>
-                  <Typography>{project.location}</Typography>
-                  <ul>
-                    {project.details.map((detail, index) => (
-                      <li key={index}>{detail}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Container maxWidth="lg">
+          <Grid container spacing={3}>
+            <Grid item xs={3}>
+              {userComponent}
+            </Grid>
+            <Grid item xs={9}>
+              {projectsComponent}
+            </Grid>
+          </Grid>
+        </Container>
       </div>
     </>
   );
