@@ -95,7 +95,7 @@ function SignIn({
   return (
     <div className={classes.root}>
       <div className={classes.card}>
-        <Logo />
+        <Logo color="primary" />
         <Typography>Welcome Back</Typography>
         <ValidatorForm
           className={classes.form}
