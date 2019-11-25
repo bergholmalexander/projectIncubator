@@ -1,9 +1,3 @@
-export const signOut = () => {
-  return {
-    type: 'SIGN_OUT'
-  };
-};
-
 export const signUpOnChangeEmail = email => {
   return {
     type: 'SIGNUP_ONCHANGE_EMAIL',
